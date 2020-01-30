@@ -1,17 +1,15 @@
 import axios from "axios";
 import { ID, SECRET } from "../key/key";
 const URL = "https://openapi.naver.com/v1/search/book.json";
-const clientID = ID
+const clientID = ID;
 const clientSecret = SECRET;
 
 export const getBooks = async term => {
   const {
-    data: {
-      data: { books }
-    }
-  } = await axios(URL, {
+    data: { items }
+  } = await axios.get(URL, {
     params: {
-      d_titl: term,
+      query: term,
       display: 10
     },
     headers: {
@@ -19,22 +17,20 @@ export const getBooks = async term => {
       "X-Naver-Client-Secret": clientSecret
     }
   });
-  return books;
+  return items;
 };
 
-export const getBook = async title => {
+export const getBook = async id => {
   const {
-    data: {
-      data: { book }
-    }
-  } = await axios(URL, {
+    data: { items }
+  } = await axios.get(URL, {
     params: {
-      d_titl: title
+      query: id
     },
     headers: {
       "X-Naver-Client-Id": clientID,
       "X-Naver-Client-Secret": clientSecret
     }
   });
-  return book;
+  return items[0];
 };
