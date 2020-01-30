@@ -21,6 +21,9 @@
     "path": "^0.12.7"
   },
   "scripts": {
+    "deploy": "prisma deploy",
+    "generate": "prisma generate",
+    "prisma": "yarn run deploy && yarn generate",
     "dev": "nodemon --exec babel-node src/server.js"
   },
   "devDependencies": {

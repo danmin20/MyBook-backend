@@ -1,3 +1,44 @@
+type User {
+  id: ID!
+  avatar: String
+  name: String!
+  followers: [User!]
+  following: [User!]
+  posts: [Post!]!
+  likes: [Like!]!
+  comments: [Comment!]!
+  loginSecret: String
+  createdAt: String
+  updatedAt: String
+}
+
+type Post {
+  id: ID!
+  book: Book!
+  sentiment: String!
+  likes: [Like!]!
+  comments: [Comment!]!
+  createdAt: String
+  updatedAt: String
+}
+
+type Like {
+  id: ID!
+  user: User
+  post: Post
+  createdAt: String
+  updatedAt: String
+}
+
+type Comment {
+  id: ID!
+  text: String!
+  user: User!
+  post: Post
+  createdAt: String
+  updatedAt: String
+}
+
 type Book {
   isbn: String!
   title: String!
