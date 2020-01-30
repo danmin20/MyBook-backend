@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ID, SECRET } from "../key";
+import { ID, SECRET } from "../key/key";
 const URL = "https://openapi.naver.com/v1/search/book.json";
 const clientID = ID
 const clientSecret = SECRET;
