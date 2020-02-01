@@ -862,6 +862,7 @@ type User {
   id: ID!
   avatar: String
   name: String!
+  email: String!
   followers(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   following(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
@@ -882,6 +883,7 @@ input UserCreateInput {
   id: ID
   avatar: String
   name: String!
+  email: String!
   followers: UserCreateManyWithoutFollowingInput
   following: UserCreateManyWithoutFollowersInput
   posts: PostCreateManyInput
@@ -914,6 +916,7 @@ input UserCreateWithoutCommentsInput {
   id: ID
   avatar: String
   name: String!
+  email: String!
   followers: UserCreateManyWithoutFollowingInput
   following: UserCreateManyWithoutFollowersInput
   posts: PostCreateManyInput
@@ -925,6 +928,7 @@ input UserCreateWithoutFollowersInput {
   id: ID
   avatar: String
   name: String!
+  email: String!
   following: UserCreateManyWithoutFollowersInput
   posts: PostCreateManyInput
   likes: LikeCreateManyWithoutUserInput
@@ -936,6 +940,7 @@ input UserCreateWithoutFollowingInput {
   id: ID
   avatar: String
   name: String!
+  email: String!
   followers: UserCreateManyWithoutFollowingInput
   posts: PostCreateManyInput
   likes: LikeCreateManyWithoutUserInput
@@ -947,6 +952,7 @@ input UserCreateWithoutLikesInput {
   id: ID
   avatar: String
   name: String!
+  email: String!
   followers: UserCreateManyWithoutFollowingInput
   following: UserCreateManyWithoutFollowersInput
   posts: PostCreateManyInput
@@ -966,6 +972,8 @@ enum UserOrderByInput {
   avatar_DESC
   name_ASC
   name_DESC
+  email_ASC
+  email_DESC
   loginSecret_ASC
   loginSecret_DESC
   createdAt_ASC
@@ -978,6 +986,7 @@ type UserPreviousValues {
   id: ID!
   avatar: String
   name: String!
+  email: String!
   loginSecret: String
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -1026,6 +1035,20 @@ input UserScalarWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
   loginSecret: String
   loginSecret_not: String
   loginSecret_in: [String!]
@@ -1082,6 +1105,7 @@ input UserSubscriptionWhereInput {
 input UserUpdateInput {
   avatar: String
   name: String
+  email: String
   followers: UserUpdateManyWithoutFollowingInput
   following: UserUpdateManyWithoutFollowersInput
   posts: PostUpdateManyInput
@@ -1093,12 +1117,14 @@ input UserUpdateInput {
 input UserUpdateManyDataInput {
   avatar: String
   name: String
+  email: String
   loginSecret: String
 }
 
 input UserUpdateManyMutationInput {
   avatar: String
   name: String
+  email: String
   loginSecret: String
 }
 
@@ -1150,6 +1176,7 @@ input UserUpdateOneWithoutLikesInput {
 input UserUpdateWithoutCommentsDataInput {
   avatar: String
   name: String
+  email: String
   followers: UserUpdateManyWithoutFollowingInput
   following: UserUpdateManyWithoutFollowersInput
   posts: PostUpdateManyInput
@@ -1160,6 +1187,7 @@ input UserUpdateWithoutCommentsDataInput {
 input UserUpdateWithoutFollowersDataInput {
   avatar: String
   name: String
+  email: String
   following: UserUpdateManyWithoutFollowersInput
   posts: PostUpdateManyInput
   likes: LikeUpdateManyWithoutUserInput
@@ -1170,6 +1198,7 @@ input UserUpdateWithoutFollowersDataInput {
 input UserUpdateWithoutFollowingDataInput {
   avatar: String
   name: String
+  email: String
   followers: UserUpdateManyWithoutFollowingInput
   posts: PostUpdateManyInput
   likes: LikeUpdateManyWithoutUserInput
@@ -1180,6 +1209,7 @@ input UserUpdateWithoutFollowingDataInput {
 input UserUpdateWithoutLikesDataInput {
   avatar: String
   name: String
+  email: String
   followers: UserUpdateManyWithoutFollowingInput
   following: UserUpdateManyWithoutFollowersInput
   posts: PostUpdateManyInput
@@ -1262,6 +1292,20 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
   followers_every: UserWhereInput
   followers_some: UserWhereInput
   followers_none: UserWhereInput

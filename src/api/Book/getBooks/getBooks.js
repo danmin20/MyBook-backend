@@ -1,5 +1,5 @@
 import axios from "axios";
-import "../../env";
+import "../../../env";
 const URL = "https://openapi.naver.com/v1/search/book.json";
 const clientID = process.env.ID;
 const clientSecret = process.env.SECRET;
