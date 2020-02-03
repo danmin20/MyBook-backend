@@ -1,4 +1,4 @@
-endpoint: https://mybook-prisma-e7a0a8afd9.herokuapp.com/mybook-backend/dev
+endpoint: `${env:PRISMA_ENDPOINT}`
 datamodel: datamodel.prisma
 
 generate:

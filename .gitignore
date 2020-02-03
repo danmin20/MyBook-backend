@@ -112,5 +112,3 @@ temp/
 
 # yarn.lock
 yarn.lock
-#prisma
-prisma.yml
