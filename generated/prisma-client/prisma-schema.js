@@ -3,7 +3,11 @@ module.exports = {
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-/* GraphQL */ `type AggregateComment {
+/* GraphQL */ `type AggregateBook {
+  count: Int!
+}
+
+type AggregateComment {
   count: Int!
 }
 
@@ -21,6 +25,329 @@ type AggregateUser {
 
 type BatchPayload {
   count: Long!
+}
+
+type Book {
+  id: ID!
+  isbn: String!
+  title: String!
+  link: String
+  image: String
+  author: String!
+  price: Int
+  discount: Int
+  publisher: String!
+  description: String
+  post: Post
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type BookConnection {
+  pageInfo: PageInfo!
+  edges: [BookEdge]!
+  aggregate: AggregateBook!
+}
+
+input BookCreateInput {
+  id: ID
+  isbn: String!
+  title: String!
+  link: String
+  image: String
+  author: String!
+  price: Int
+  discount: Int
+  publisher: String!
+  description: String
+  post: PostCreateOneWithoutBookInput
+}
+
+input BookCreateOneWithoutPostInput {
+  create: BookCreateWithoutPostInput
+  connect: BookWhereUniqueInput
+}
+
+input BookCreateWithoutPostInput {
+  id: ID
+  isbn: String!
+  title: String!
+  link: String
+  image: String
+  author: String!
+  price: Int
+  discount: Int
+  publisher: String!
+  description: String
+}
+
+type BookEdge {
+  node: Book!
+  cursor: String!
+}
+
+enum BookOrderByInput {
+  id_ASC
+  id_DESC
+  isbn_ASC
+  isbn_DESC
+  title_ASC
+  title_DESC
+  link_ASC
+  link_DESC
+  image_ASC
+  image_DESC
+  author_ASC
+  author_DESC
+  price_ASC
+  price_DESC
+  discount_ASC
+  discount_DESC
+  publisher_ASC
+  publisher_DESC
+  description_ASC
+  description_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type BookPreviousValues {
+  id: ID!
+  isbn: String!
+  title: String!
+  link: String
+  image: String
+  author: String!
+  price: Int
+  discount: Int
+  publisher: String!
+  description: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type BookSubscriptionPayload {
+  mutation: MutationType!
+  node: Book
+  updatedFields: [String!]
+  previousValues: BookPreviousValues
+}
+
+input BookSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: BookWhereInput
+  AND: [BookSubscriptionWhereInput!]
+  OR: [BookSubscriptionWhereInput!]
+  NOT: [BookSubscriptionWhereInput!]
+}
+
+input BookUpdateInput {
+  isbn: String
+  title: String
+  link: String
+  image: String
+  author: String
+  price: Int
+  discount: Int
+  publisher: String
+  description: String
+  post: PostUpdateOneWithoutBookInput
+}
+
+input BookUpdateManyMutationInput {
+  isbn: String
+  title: String
+  link: String
+  image: String
+  author: String
+  price: Int
+  discount: Int
+  publisher: String
+  description: String
+}
+
+input BookUpdateOneRequiredWithoutPostInput {
+  create: BookCreateWithoutPostInput
+  update: BookUpdateWithoutPostDataInput
+  upsert: BookUpsertWithoutPostInput
+  connect: BookWhereUniqueInput
+}
+
+input BookUpdateWithoutPostDataInput {
+  isbn: String
+  title: String
+  link: String
+  image: String
+  author: String
+  price: Int
+  discount: Int
+  publisher: String
+  description: String
+}
+
+input BookUpsertWithoutPostInput {
+  update: BookUpdateWithoutPostDataInput!
+  create: BookCreateWithoutPostInput!
+}
+
+input BookWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  isbn: String
+  isbn_not: String
+  isbn_in: [String!]
+  isbn_not_in: [String!]
+  isbn_lt: String
+  isbn_lte: String
+  isbn_gt: String
+  isbn_gte: String
+  isbn_contains: String
+  isbn_not_contains: String
+  isbn_starts_with: String
+  isbn_not_starts_with: String
+  isbn_ends_with: String
+  isbn_not_ends_with: String
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  link: String
+  link_not: String
+  link_in: [String!]
+  link_not_in: [String!]
+  link_lt: String
+  link_lte: String
+  link_gt: String
+  link_gte: String
+  link_contains: String
+  link_not_contains: String
+  link_starts_with: String
+  link_not_starts_with: String
+  link_ends_with: String
+  link_not_ends_with: String
+  image: String
+  image_not: String
+  image_in: [String!]
+  image_not_in: [String!]
+  image_lt: String
+  image_lte: String
+  image_gt: String
+  image_gte: String
+  image_contains: String
+  image_not_contains: String
+  image_starts_with: String
+  image_not_starts_with: String
+  image_ends_with: String
+  image_not_ends_with: String
+  author: String
+  author_not: String
+  author_in: [String!]
+  author_not_in: [String!]
+  author_lt: String
+  author_lte: String
+  author_gt: String
+  author_gte: String
+  author_contains: String
+  author_not_contains: String
+  author_starts_with: String
+  author_not_starts_with: String
+  author_ends_with: String
+  author_not_ends_with: String
+  price: Int
+  price_not: Int
+  price_in: [Int!]
+  price_not_in: [Int!]
+  price_lt: Int
+  price_lte: Int
+  price_gt: Int
+  price_gte: Int
+  discount: Int
+  discount_not: Int
+  discount_in: [Int!]
+  discount_not_in: [Int!]
+  discount_lt: Int
+  discount_lte: Int
+  discount_gt: Int
+  discount_gte: Int
+  publisher: String
+  publisher_not: String
+  publisher_in: [String!]
+  publisher_not_in: [String!]
+  publisher_lt: String
+  publisher_lte: String
+  publisher_gt: String
+  publisher_gte: String
+  publisher_contains: String
+  publisher_not_contains: String
+  publisher_starts_with: String
+  publisher_not_starts_with: String
+  publisher_ends_with: String
+  publisher_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  post: PostWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [BookWhereInput!]
+  OR: [BookWhereInput!]
+  NOT: [BookWhereInput!]
+}
+
+input BookWhereUniqueInput {
+  id: ID
 }
 
 type Comment {
@@ -507,6 +834,12 @@ input LikeWhereUniqueInput {
 scalar Long
 
 type Mutation {
+  createBook(data: BookCreateInput!): Book!
+  updateBook(data: BookUpdateInput!, where: BookWhereUniqueInput!): Book
+  updateManyBooks(data: BookUpdateManyMutationInput!, where: BookWhereInput): BatchPayload!
+  upsertBook(where: BookWhereUniqueInput!, create: BookCreateInput!, update: BookUpdateInput!): Book!
+  deleteBook(where: BookWhereUniqueInput!): Book
+  deleteManyBooks(where: BookWhereInput): BatchPayload!
   createComment(data: CommentCreateInput!): Comment!
   updateComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment
   updateManyComments(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload!
@@ -551,11 +884,13 @@ type PageInfo {
 
 type Post {
   id: ID!
+  user: User
   sentiment: String!
   likes(where: LikeWhereInput, orderBy: LikeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Like!]
   comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
   createdAt: DateTime!
   updatedAt: DateTime!
+  book: Book!
 }
 
 type PostConnection {
@@ -566,14 +901,21 @@ type PostConnection {
 
 input PostCreateInput {
   id: ID
+  user: UserCreateOneWithoutPostsInput
   sentiment: String!
   likes: LikeCreateManyWithoutPostInput
   comments: CommentCreateManyWithoutPostInput
+  book: BookCreateOneWithoutPostInput!
 }
 
-input PostCreateManyInput {
-  create: [PostCreateInput!]
+input PostCreateManyWithoutUserInput {
+  create: [PostCreateWithoutUserInput!]
   connect: [PostWhereUniqueInput!]
+}
+
+input PostCreateOneWithoutBookInput {
+  create: PostCreateWithoutBookInput
+  connect: PostWhereUniqueInput
 }
 
 input PostCreateOneWithoutCommentsInput {
@@ -586,16 +928,36 @@ input PostCreateOneWithoutLikesInput {
   connect: PostWhereUniqueInput
 }
 
-input PostCreateWithoutCommentsInput {
+input PostCreateWithoutBookInput {
   id: ID
+  user: UserCreateOneWithoutPostsInput
   sentiment: String!
   likes: LikeCreateManyWithoutPostInput
+  comments: CommentCreateManyWithoutPostInput
+}
+
+input PostCreateWithoutCommentsInput {
+  id: ID
+  user: UserCreateOneWithoutPostsInput
+  sentiment: String!
+  likes: LikeCreateManyWithoutPostInput
+  book: BookCreateOneWithoutPostInput!
 }
 
 input PostCreateWithoutLikesInput {
   id: ID
+  user: UserCreateOneWithoutPostsInput
   sentiment: String!
   comments: CommentCreateManyWithoutPostInput
+  book: BookCreateOneWithoutPostInput!
+}
+
+input PostCreateWithoutUserInput {
+  id: ID
+  sentiment: String!
+  likes: LikeCreateManyWithoutPostInput
+  comments: CommentCreateManyWithoutPostInput
+  book: BookCreateOneWithoutPostInput!
 }
 
 type PostEdge {
@@ -689,41 +1051,46 @@ input PostSubscriptionWhereInput {
   NOT: [PostSubscriptionWhereInput!]
 }
 
-input PostUpdateDataInput {
-  sentiment: String
-  likes: LikeUpdateManyWithoutPostInput
-  comments: CommentUpdateManyWithoutPostInput
-}
-
 input PostUpdateInput {
+  user: UserUpdateOneWithoutPostsInput
   sentiment: String
   likes: LikeUpdateManyWithoutPostInput
   comments: CommentUpdateManyWithoutPostInput
+  book: BookUpdateOneRequiredWithoutPostInput
 }
 
 input PostUpdateManyDataInput {
   sentiment: String
 }
 
-input PostUpdateManyInput {
-  create: [PostCreateInput!]
-  update: [PostUpdateWithWhereUniqueNestedInput!]
-  upsert: [PostUpsertWithWhereUniqueNestedInput!]
+input PostUpdateManyMutationInput {
+  sentiment: String
+}
+
+input PostUpdateManyWithoutUserInput {
+  create: [PostCreateWithoutUserInput!]
   delete: [PostWhereUniqueInput!]
   connect: [PostWhereUniqueInput!]
   set: [PostWhereUniqueInput!]
   disconnect: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutUserInput!]
   deleteMany: [PostScalarWhereInput!]
   updateMany: [PostUpdateManyWithWhereNestedInput!]
-}
-
-input PostUpdateManyMutationInput {
-  sentiment: String
 }
 
 input PostUpdateManyWithWhereNestedInput {
   where: PostScalarWhereInput!
   data: PostUpdateManyDataInput!
+}
+
+input PostUpdateOneWithoutBookInput {
+  create: PostCreateWithoutBookInput
+  update: PostUpdateWithoutBookDataInput
+  upsert: PostUpsertWithoutBookInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: PostWhereUniqueInput
 }
 
 input PostUpdateOneWithoutCommentsInput {
@@ -744,19 +1111,42 @@ input PostUpdateOneWithoutLikesInput {
   connect: PostWhereUniqueInput
 }
 
-input PostUpdateWithoutCommentsDataInput {
+input PostUpdateWithoutBookDataInput {
+  user: UserUpdateOneWithoutPostsInput
   sentiment: String
   likes: LikeUpdateManyWithoutPostInput
-}
-
-input PostUpdateWithoutLikesDataInput {
-  sentiment: String
   comments: CommentUpdateManyWithoutPostInput
 }
 
-input PostUpdateWithWhereUniqueNestedInput {
+input PostUpdateWithoutCommentsDataInput {
+  user: UserUpdateOneWithoutPostsInput
+  sentiment: String
+  likes: LikeUpdateManyWithoutPostInput
+  book: BookUpdateOneRequiredWithoutPostInput
+}
+
+input PostUpdateWithoutLikesDataInput {
+  user: UserUpdateOneWithoutPostsInput
+  sentiment: String
+  comments: CommentUpdateManyWithoutPostInput
+  book: BookUpdateOneRequiredWithoutPostInput
+}
+
+input PostUpdateWithoutUserDataInput {
+  sentiment: String
+  likes: LikeUpdateManyWithoutPostInput
+  comments: CommentUpdateManyWithoutPostInput
+  book: BookUpdateOneRequiredWithoutPostInput
+}
+
+input PostUpdateWithWhereUniqueWithoutUserInput {
   where: PostWhereUniqueInput!
-  data: PostUpdateDataInput!
+  data: PostUpdateWithoutUserDataInput!
+}
+
+input PostUpsertWithoutBookInput {
+  update: PostUpdateWithoutBookDataInput!
+  create: PostCreateWithoutBookInput!
 }
 
 input PostUpsertWithoutCommentsInput {
@@ -769,10 +1159,10 @@ input PostUpsertWithoutLikesInput {
   create: PostCreateWithoutLikesInput!
 }
 
-input PostUpsertWithWhereUniqueNestedInput {
+input PostUpsertWithWhereUniqueWithoutUserInput {
   where: PostWhereUniqueInput!
-  update: PostUpdateDataInput!
-  create: PostCreateInput!
+  update: PostUpdateWithoutUserDataInput!
+  create: PostCreateWithoutUserInput!
 }
 
 input PostWhereInput {
@@ -790,6 +1180,7 @@ input PostWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  user: UserWhereInput
   sentiment: String
   sentiment_not: String
   sentiment_in: [String!]
@@ -826,6 +1217,7 @@ input PostWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
+  book: BookWhereInput
   AND: [PostWhereInput!]
   OR: [PostWhereInput!]
   NOT: [PostWhereInput!]
@@ -836,6 +1228,9 @@ input PostWhereUniqueInput {
 }
 
 type Query {
+  book(where: BookWhereUniqueInput!): Book
+  books(where: BookWhereInput, orderBy: BookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Book]!
+  booksConnection(where: BookWhereInput, orderBy: BookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BookConnection!
   comment(where: CommentWhereUniqueInput!): Comment
   comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment]!
   commentsConnection(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CommentConnection!
@@ -852,6 +1247,7 @@ type Query {
 }
 
 type Subscription {
+  book(where: BookSubscriptionWhereInput): BookSubscriptionPayload
   comment(where: CommentSubscriptionWhereInput): CommentSubscriptionPayload
   like(where: LikeSubscriptionWhereInput): LikeSubscriptionPayload
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
@@ -886,7 +1282,7 @@ input UserCreateInput {
   email: String!
   followers: UserCreateManyWithoutFollowingInput
   following: UserCreateManyWithoutFollowersInput
-  posts: PostCreateManyInput
+  posts: PostCreateManyWithoutUserInput
   likes: LikeCreateManyWithoutUserInput
   comments: CommentCreateManyWithoutUserInput
   loginSecret: String
@@ -912,6 +1308,11 @@ input UserCreateOneWithoutLikesInput {
   connect: UserWhereUniqueInput
 }
 
+input UserCreateOneWithoutPostsInput {
+  create: UserCreateWithoutPostsInput
+  connect: UserWhereUniqueInput
+}
+
 input UserCreateWithoutCommentsInput {
   id: ID
   avatar: String
@@ -919,7 +1320,7 @@ input UserCreateWithoutCommentsInput {
   email: String!
   followers: UserCreateManyWithoutFollowingInput
   following: UserCreateManyWithoutFollowersInput
-  posts: PostCreateManyInput
+  posts: PostCreateManyWithoutUserInput
   likes: LikeCreateManyWithoutUserInput
   loginSecret: String
 }
@@ -930,7 +1331,7 @@ input UserCreateWithoutFollowersInput {
   name: String!
   email: String!
   following: UserCreateManyWithoutFollowersInput
-  posts: PostCreateManyInput
+  posts: PostCreateManyWithoutUserInput
   likes: LikeCreateManyWithoutUserInput
   comments: CommentCreateManyWithoutUserInput
   loginSecret: String
@@ -942,7 +1343,7 @@ input UserCreateWithoutFollowingInput {
   name: String!
   email: String!
   followers: UserCreateManyWithoutFollowingInput
-  posts: PostCreateManyInput
+  posts: PostCreateManyWithoutUserInput
   likes: LikeCreateManyWithoutUserInput
   comments: CommentCreateManyWithoutUserInput
   loginSecret: String
@@ -955,7 +1356,19 @@ input UserCreateWithoutLikesInput {
   email: String!
   followers: UserCreateManyWithoutFollowingInput
   following: UserCreateManyWithoutFollowersInput
-  posts: PostCreateManyInput
+  posts: PostCreateManyWithoutUserInput
+  comments: CommentCreateManyWithoutUserInput
+  loginSecret: String
+}
+
+input UserCreateWithoutPostsInput {
+  id: ID
+  avatar: String
+  name: String!
+  email: String!
+  followers: UserCreateManyWithoutFollowingInput
+  following: UserCreateManyWithoutFollowersInput
+  likes: LikeCreateManyWithoutUserInput
   comments: CommentCreateManyWithoutUserInput
   loginSecret: String
 }
@@ -1108,7 +1521,7 @@ input UserUpdateInput {
   email: String
   followers: UserUpdateManyWithoutFollowingInput
   following: UserUpdateManyWithoutFollowersInput
-  posts: PostUpdateManyInput
+  posts: PostUpdateManyWithoutUserInput
   likes: LikeUpdateManyWithoutUserInput
   comments: CommentUpdateManyWithoutUserInput
   loginSecret: String
@@ -1173,13 +1586,22 @@ input UserUpdateOneWithoutLikesInput {
   connect: UserWhereUniqueInput
 }
 
+input UserUpdateOneWithoutPostsInput {
+  create: UserCreateWithoutPostsInput
+  update: UserUpdateWithoutPostsDataInput
+  upsert: UserUpsertWithoutPostsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
 input UserUpdateWithoutCommentsDataInput {
   avatar: String
   name: String
   email: String
   followers: UserUpdateManyWithoutFollowingInput
   following: UserUpdateManyWithoutFollowersInput
-  posts: PostUpdateManyInput
+  posts: PostUpdateManyWithoutUserInput
   likes: LikeUpdateManyWithoutUserInput
   loginSecret: String
 }
@@ -1189,7 +1611,7 @@ input UserUpdateWithoutFollowersDataInput {
   name: String
   email: String
   following: UserUpdateManyWithoutFollowersInput
-  posts: PostUpdateManyInput
+  posts: PostUpdateManyWithoutUserInput
   likes: LikeUpdateManyWithoutUserInput
   comments: CommentUpdateManyWithoutUserInput
   loginSecret: String
@@ -1200,7 +1622,7 @@ input UserUpdateWithoutFollowingDataInput {
   name: String
   email: String
   followers: UserUpdateManyWithoutFollowingInput
-  posts: PostUpdateManyInput
+  posts: PostUpdateManyWithoutUserInput
   likes: LikeUpdateManyWithoutUserInput
   comments: CommentUpdateManyWithoutUserInput
   loginSecret: String
@@ -1212,7 +1634,18 @@ input UserUpdateWithoutLikesDataInput {
   email: String
   followers: UserUpdateManyWithoutFollowingInput
   following: UserUpdateManyWithoutFollowersInput
-  posts: PostUpdateManyInput
+  posts: PostUpdateManyWithoutUserInput
+  comments: CommentUpdateManyWithoutUserInput
+  loginSecret: String
+}
+
+input UserUpdateWithoutPostsDataInput {
+  avatar: String
+  name: String
+  email: String
+  followers: UserUpdateManyWithoutFollowingInput
+  following: UserUpdateManyWithoutFollowersInput
+  likes: LikeUpdateManyWithoutUserInput
   comments: CommentUpdateManyWithoutUserInput
   loginSecret: String
 }
@@ -1235,6 +1668,11 @@ input UserUpsertWithoutCommentsInput {
 input UserUpsertWithoutLikesInput {
   update: UserUpdateWithoutLikesDataInput!
   create: UserCreateWithoutLikesInput!
+}
+
+input UserUpsertWithoutPostsInput {
+  update: UserUpdateWithoutPostsDataInput!
+  create: UserCreateWithoutPostsInput!
 }
 
 input UserUpsertWithWhereUniqueWithoutFollowersInput {

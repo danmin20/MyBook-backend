@@ -15,11 +15,13 @@ type User {
 
 type Post {
   id: ID! @id
+  user: User @relation(name: "PostsOfUser")
   sentiment: String!
   likes: [Like!]! @relation(name: "LikesOfPost" onDelete: CASCADE)
   comments: [Comment!]! @relation(name: "CommentsOfPost" onDelete: CASCADE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+  book: Book! @relation(link: INLINE)
 }
 
 type Like {
@@ -35,6 +37,22 @@ type Comment {
   text: String!
   user: User! @relation(name: "CommentsOfUser")
   post: Post @relation(name: "CommentsOfPost")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Book {
+  id: ID! @id
+  isbn: String!
+  title: String!
+  link: String
+  image: String
+  author: String!
+  price: Int
+  discount: Int
+  publisher: String!
+  description: String
+  post: Post
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
