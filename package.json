@@ -11,6 +11,7 @@
     "@babel/core": "^7.8.3",
     "@babel/node": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
+    "@sendgrid/mail": "^6.5.1",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "graphql-tools": "^4.0.6",
