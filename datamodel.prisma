@@ -2,7 +2,7 @@ type User {
   id: ID! @id
   avatar: String
   name: String!
-  email: String!
+  email: String! @unique
   followers: [User!]! @relation(name: "FollowRelation")
   following: [User!]! @relation(name: "FollowRelation")
   posts: [Post!]! @relation(name: "PostsOfUser" onDelete: CASCADE)

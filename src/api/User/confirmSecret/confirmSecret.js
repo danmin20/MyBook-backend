@@ -13,7 +13,9 @@ export default {
             loginSecret: ""
           }
         });
-        return generateToken(user.id);
+        const token= generateToken(user.id);
+        console.log(token)
+        return token;
       } else {
         throw Error("Wrong email or secret key");
       }

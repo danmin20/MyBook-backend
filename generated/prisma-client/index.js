@@ -28,6 +28,6 @@ var models = [
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `https://us1.prisma.sh/lee-jeong-min-53b1fe/MyBook/dev`
+  endpoint: `https://mybook-prisma-e7a0a8afd9.herokuapp.com/mybook-backend/dev`
 });
 exports.prisma = new exports.Prisma();
