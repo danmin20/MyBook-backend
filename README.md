@@ -1,6 +1,6 @@
 # MyBook Back-end
-Backend for MyBook
-[MyBook App](https://github.com/danmin20/Instargram-App)
+Backend for MyBook<br>
+[MyBook App](https://github.com/danmin20/MyBook-App)
 
 ## App
 Name : "마이북"
