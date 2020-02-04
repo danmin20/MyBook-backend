@@ -34,8 +34,8 @@ type Book {
   link: String
   image: String
   author: String!
-  price: Int
-  discount: Int
+  price: String
+  discount: String
   publisher: String!
   description: String
   post: Post
@@ -56,8 +56,8 @@ input BookCreateInput {
   link: String
   image: String
   author: String!
-  price: Int
-  discount: Int
+  price: String
+  discount: String
   publisher: String!
   description: String
   post: PostCreateOneWithoutBookInput
@@ -75,8 +75,8 @@ input BookCreateWithoutPostInput {
   link: String
   image: String
   author: String!
-  price: Int
-  discount: Int
+  price: String
+  discount: String
   publisher: String!
   description: String
 }
@@ -120,8 +120,8 @@ type BookPreviousValues {
   link: String
   image: String
   author: String!
-  price: Int
-  discount: Int
+  price: String
+  discount: String
   publisher: String!
   description: String
   createdAt: DateTime!
@@ -152,8 +152,8 @@ input BookUpdateInput {
   link: String
   image: String
   author: String
-  price: Int
-  discount: Int
+  price: String
+  discount: String
   publisher: String
   description: String
   post: PostUpdateOneWithoutBookInput
@@ -165,16 +165,18 @@ input BookUpdateManyMutationInput {
   link: String
   image: String
   author: String
-  price: Int
-  discount: Int
+  price: String
+  discount: String
   publisher: String
   description: String
 }
 
-input BookUpdateOneRequiredWithoutPostInput {
+input BookUpdateOneWithoutPostInput {
   create: BookCreateWithoutPostInput
   update: BookUpdateWithoutPostDataInput
   upsert: BookUpsertWithoutPostInput
+  delete: Boolean
+  disconnect: Boolean
   connect: BookWhereUniqueInput
 }
 
@@ -184,8 +186,8 @@ input BookUpdateWithoutPostDataInput {
   link: String
   image: String
   author: String
-  price: Int
-  discount: Int
+  price: String
+  discount: String
   publisher: String
   description: String
 }
@@ -280,22 +282,34 @@ input BookWhereInput {
   author_not_starts_with: String
   author_ends_with: String
   author_not_ends_with: String
-  price: Int
-  price_not: Int
-  price_in: [Int!]
-  price_not_in: [Int!]
-  price_lt: Int
-  price_lte: Int
-  price_gt: Int
-  price_gte: Int
-  discount: Int
-  discount_not: Int
-  discount_in: [Int!]
-  discount_not_in: [Int!]
-  discount_lt: Int
-  discount_lte: Int
-  discount_gt: Int
-  discount_gte: Int
+  price: String
+  price_not: String
+  price_in: [String!]
+  price_not_in: [String!]
+  price_lt: String
+  price_lte: String
+  price_gt: String
+  price_gte: String
+  price_contains: String
+  price_not_contains: String
+  price_starts_with: String
+  price_not_starts_with: String
+  price_ends_with: String
+  price_not_ends_with: String
+  discount: String
+  discount_not: String
+  discount_in: [String!]
+  discount_not_in: [String!]
+  discount_lt: String
+  discount_lte: String
+  discount_gt: String
+  discount_gte: String
+  discount_contains: String
+  discount_not_contains: String
+  discount_starts_with: String
+  discount_not_starts_with: String
+  discount_ends_with: String
+  discount_not_ends_with: String
   publisher: String
   publisher_not: String
   publisher_in: [String!]
@@ -890,7 +904,7 @@ type Post {
   comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
   createdAt: DateTime!
   updatedAt: DateTime!
-  book: Book!
+  book: Book
 }
 
 type PostConnection {
@@ -905,7 +919,7 @@ input PostCreateInput {
   sentiment: String!
   likes: LikeCreateManyWithoutPostInput
   comments: CommentCreateManyWithoutPostInput
-  book: BookCreateOneWithoutPostInput!
+  book: BookCreateOneWithoutPostInput
 }
 
 input PostCreateManyWithoutUserInput {
@@ -941,7 +955,7 @@ input PostCreateWithoutCommentsInput {
   user: UserCreateOneWithoutPostsInput
   sentiment: String!
   likes: LikeCreateManyWithoutPostInput
-  book: BookCreateOneWithoutPostInput!
+  book: BookCreateOneWithoutPostInput
 }
 
 input PostCreateWithoutLikesInput {
@@ -949,7 +963,7 @@ input PostCreateWithoutLikesInput {
   user: UserCreateOneWithoutPostsInput
   sentiment: String!
   comments: CommentCreateManyWithoutPostInput
-  book: BookCreateOneWithoutPostInput!
+  book: BookCreateOneWithoutPostInput
 }
 
 input PostCreateWithoutUserInput {
@@ -957,7 +971,7 @@ input PostCreateWithoutUserInput {
   sentiment: String!
   likes: LikeCreateManyWithoutPostInput
   comments: CommentCreateManyWithoutPostInput
-  book: BookCreateOneWithoutPostInput!
+  book: BookCreateOneWithoutPostInput
 }
 
 type PostEdge {
@@ -1056,7 +1070,7 @@ input PostUpdateInput {
   sentiment: String
   likes: LikeUpdateManyWithoutPostInput
   comments: CommentUpdateManyWithoutPostInput
-  book: BookUpdateOneRequiredWithoutPostInput
+  book: BookUpdateOneWithoutPostInput
 }
 
 input PostUpdateManyDataInput {
@@ -1122,21 +1136,21 @@ input PostUpdateWithoutCommentsDataInput {
   user: UserUpdateOneWithoutPostsInput
   sentiment: String
   likes: LikeUpdateManyWithoutPostInput
-  book: BookUpdateOneRequiredWithoutPostInput
+  book: BookUpdateOneWithoutPostInput
 }
 
 input PostUpdateWithoutLikesDataInput {
   user: UserUpdateOneWithoutPostsInput
   sentiment: String
   comments: CommentUpdateManyWithoutPostInput
-  book: BookUpdateOneRequiredWithoutPostInput
+  book: BookUpdateOneWithoutPostInput
 }
 
 input PostUpdateWithoutUserDataInput {
   sentiment: String
   likes: LikeUpdateManyWithoutPostInput
   comments: CommentUpdateManyWithoutPostInput
-  book: BookUpdateOneRequiredWithoutPostInput
+  book: BookUpdateOneWithoutPostInput
 }
 
 input PostUpdateWithWhereUniqueWithoutUserInput {

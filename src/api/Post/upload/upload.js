@@ -1,5 +1,5 @@
 import { prisma } from "../../../../generated/prisma-client";
-import getBooks from "../../Book/getBooks/getBooks";
+import { getBooks } from "../../../getBooks";
 
 export default {
   Mutation: {
@@ -7,7 +7,8 @@ export default {
       isAuthenticated(request);
       const { user } = request;
       const { sentiment, bookId } = args;
-      const book = await getBooks({ term: { bookId } });
+      const [book] = await getBooks(bookId);
+      console.log(book);
       const post = await prisma.createPost({
         sentiment,
         user: { connect: { id: user.id } }

@@ -669,22 +669,34 @@ export interface BookWhereInput {
   author_not_starts_with?: Maybe<String>;
   author_ends_with?: Maybe<String>;
   author_not_ends_with?: Maybe<String>;
-  price?: Maybe<Int>;
-  price_not?: Maybe<Int>;
-  price_in?: Maybe<Int[] | Int>;
-  price_not_in?: Maybe<Int[] | Int>;
-  price_lt?: Maybe<Int>;
-  price_lte?: Maybe<Int>;
-  price_gt?: Maybe<Int>;
-  price_gte?: Maybe<Int>;
-  discount?: Maybe<Int>;
-  discount_not?: Maybe<Int>;
-  discount_in?: Maybe<Int[] | Int>;
-  discount_not_in?: Maybe<Int[] | Int>;
-  discount_lt?: Maybe<Int>;
-  discount_lte?: Maybe<Int>;
-  discount_gt?: Maybe<Int>;
-  discount_gte?: Maybe<Int>;
+  price?: Maybe<String>;
+  price_not?: Maybe<String>;
+  price_in?: Maybe<String[] | String>;
+  price_not_in?: Maybe<String[] | String>;
+  price_lt?: Maybe<String>;
+  price_lte?: Maybe<String>;
+  price_gt?: Maybe<String>;
+  price_gte?: Maybe<String>;
+  price_contains?: Maybe<String>;
+  price_not_contains?: Maybe<String>;
+  price_starts_with?: Maybe<String>;
+  price_not_starts_with?: Maybe<String>;
+  price_ends_with?: Maybe<String>;
+  price_not_ends_with?: Maybe<String>;
+  discount?: Maybe<String>;
+  discount_not?: Maybe<String>;
+  discount_in?: Maybe<String[] | String>;
+  discount_not_in?: Maybe<String[] | String>;
+  discount_lt?: Maybe<String>;
+  discount_lte?: Maybe<String>;
+  discount_gt?: Maybe<String>;
+  discount_gte?: Maybe<String>;
+  discount_contains?: Maybe<String>;
+  discount_not_contains?: Maybe<String>;
+  discount_starts_with?: Maybe<String>;
+  discount_not_starts_with?: Maybe<String>;
+  discount_ends_with?: Maybe<String>;
+  discount_not_ends_with?: Maybe<String>;
   publisher?: Maybe<String>;
   publisher_not?: Maybe<String>;
   publisher_in?: Maybe<String[] | String>;
@@ -759,8 +771,8 @@ export interface BookCreateInput {
   link?: Maybe<String>;
   image?: Maybe<String>;
   author: String;
-  price?: Maybe<Int>;
-  discount?: Maybe<Int>;
+  price?: Maybe<String>;
+  discount?: Maybe<String>;
   publisher: String;
   description?: Maybe<String>;
   post?: Maybe<PostCreateOneWithoutBookInput>;
@@ -825,7 +837,7 @@ export interface PostCreateWithoutUserInput {
   sentiment: String;
   likes?: Maybe<LikeCreateManyWithoutPostInput>;
   comments?: Maybe<CommentCreateManyWithoutPostInput>;
-  book: BookCreateOneWithoutPostInput;
+  book?: Maybe<BookCreateOneWithoutPostInput>;
 }
 
 export interface LikeCreateManyWithoutPostInput {
@@ -894,7 +906,7 @@ export interface PostCreateWithoutLikesInput {
   user?: Maybe<UserCreateOneWithoutPostsInput>;
   sentiment: String;
   comments?: Maybe<CommentCreateManyWithoutPostInput>;
-  book: BookCreateOneWithoutPostInput;
+  book?: Maybe<BookCreateOneWithoutPostInput>;
 }
 
 export interface CommentCreateManyWithoutPostInput {
@@ -939,8 +951,8 @@ export interface BookCreateWithoutPostInput {
   link?: Maybe<String>;
   image?: Maybe<String>;
   author: String;
-  price?: Maybe<Int>;
-  discount?: Maybe<Int>;
+  price?: Maybe<String>;
+  discount?: Maybe<String>;
   publisher: String;
   description?: Maybe<String>;
 }
@@ -968,7 +980,7 @@ export interface PostCreateWithoutCommentsInput {
   user?: Maybe<UserCreateOneWithoutPostsInput>;
   sentiment: String;
   likes?: Maybe<LikeCreateManyWithoutPostInput>;
-  book: BookCreateOneWithoutPostInput;
+  book?: Maybe<BookCreateOneWithoutPostInput>;
 }
 
 export interface BookUpdateInput {
@@ -977,8 +989,8 @@ export interface BookUpdateInput {
   link?: Maybe<String>;
   image?: Maybe<String>;
   author?: Maybe<String>;
-  price?: Maybe<Int>;
-  discount?: Maybe<Int>;
+  price?: Maybe<String>;
+  discount?: Maybe<String>;
   publisher?: Maybe<String>;
   description?: Maybe<String>;
   post?: Maybe<PostUpdateOneWithoutBookInput>;
@@ -1087,7 +1099,7 @@ export interface PostUpdateWithoutUserDataInput {
   sentiment?: Maybe<String>;
   likes?: Maybe<LikeUpdateManyWithoutPostInput>;
   comments?: Maybe<CommentUpdateManyWithoutPostInput>;
-  book?: Maybe<BookUpdateOneRequiredWithoutPostInput>;
+  book?: Maybe<BookUpdateOneWithoutPostInput>;
 }
 
 export interface LikeUpdateManyWithoutPostInput {
@@ -1213,7 +1225,7 @@ export interface PostUpdateWithoutLikesDataInput {
   user?: Maybe<UserUpdateOneWithoutPostsInput>;
   sentiment?: Maybe<String>;
   comments?: Maybe<CommentUpdateManyWithoutPostInput>;
-  book?: Maybe<BookUpdateOneRequiredWithoutPostInput>;
+  book?: Maybe<BookUpdateOneWithoutPostInput>;
 }
 
 export interface CommentUpdateManyWithoutPostInput {
@@ -1337,10 +1349,12 @@ export interface CommentUpdateManyDataInput {
   text?: Maybe<String>;
 }
 
-export interface BookUpdateOneRequiredWithoutPostInput {
+export interface BookUpdateOneWithoutPostInput {
   create?: Maybe<BookCreateWithoutPostInput>;
   update?: Maybe<BookUpdateWithoutPostDataInput>;
   upsert?: Maybe<BookUpsertWithoutPostInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
   connect?: Maybe<BookWhereUniqueInput>;
 }
 
@@ -1350,8 +1364,8 @@ export interface BookUpdateWithoutPostDataInput {
   link?: Maybe<String>;
   image?: Maybe<String>;
   author?: Maybe<String>;
-  price?: Maybe<Int>;
-  discount?: Maybe<Int>;
+  price?: Maybe<String>;
+  discount?: Maybe<String>;
   publisher?: Maybe<String>;
   description?: Maybe<String>;
 }
@@ -1454,7 +1468,7 @@ export interface PostUpdateWithoutCommentsDataInput {
   user?: Maybe<UserUpdateOneWithoutPostsInput>;
   sentiment?: Maybe<String>;
   likes?: Maybe<LikeUpdateManyWithoutPostInput>;
-  book?: Maybe<BookUpdateOneRequiredWithoutPostInput>;
+  book?: Maybe<BookUpdateOneWithoutPostInput>;
 }
 
 export interface PostUpsertWithoutCommentsInput {
@@ -1676,8 +1690,8 @@ export interface BookUpdateManyMutationInput {
   link?: Maybe<String>;
   image?: Maybe<String>;
   author?: Maybe<String>;
-  price?: Maybe<Int>;
-  discount?: Maybe<Int>;
+  price?: Maybe<String>;
+  discount?: Maybe<String>;
   publisher?: Maybe<String>;
   description?: Maybe<String>;
 }
@@ -1716,7 +1730,7 @@ export interface PostCreateInput {
   sentiment: String;
   likes?: Maybe<LikeCreateManyWithoutPostInput>;
   comments?: Maybe<CommentCreateManyWithoutPostInput>;
-  book: BookCreateOneWithoutPostInput;
+  book?: Maybe<BookCreateOneWithoutPostInput>;
 }
 
 export interface PostUpdateInput {
@@ -1724,7 +1738,7 @@ export interface PostUpdateInput {
   sentiment?: Maybe<String>;
   likes?: Maybe<LikeUpdateManyWithoutPostInput>;
   comments?: Maybe<CommentUpdateManyWithoutPostInput>;
-  book?: Maybe<BookUpdateOneRequiredWithoutPostInput>;
+  book?: Maybe<BookUpdateOneWithoutPostInput>;
 }
 
 export interface PostUpdateManyMutationInput {
@@ -1829,8 +1843,8 @@ export interface Book {
   link?: String;
   image?: String;
   author: String;
-  price?: Int;
-  discount?: Int;
+  price?: String;
+  discount?: String;
   publisher: String;
   description?: String;
   createdAt: DateTimeOutput;
@@ -1844,8 +1858,8 @@ export interface BookPromise extends Promise<Book>, Fragmentable {
   link: () => Promise<String>;
   image: () => Promise<String>;
   author: () => Promise<String>;
-  price: () => Promise<Int>;
-  discount: () => Promise<Int>;
+  price: () => Promise<String>;
+  discount: () => Promise<String>;
   publisher: () => Promise<String>;
   description: () => Promise<String>;
   post: <T = PostPromise>() => T;
@@ -1862,8 +1876,8 @@ export interface BookSubscription
   link: () => Promise<AsyncIterator<String>>;
   image: () => Promise<AsyncIterator<String>>;
   author: () => Promise<AsyncIterator<String>>;
-  price: () => Promise<AsyncIterator<Int>>;
-  discount: () => Promise<AsyncIterator<Int>>;
+  price: () => Promise<AsyncIterator<String>>;
+  discount: () => Promise<AsyncIterator<String>>;
   publisher: () => Promise<AsyncIterator<String>>;
   description: () => Promise<AsyncIterator<String>>;
   post: <T = PostSubscription>() => T;
@@ -1880,8 +1894,8 @@ export interface BookNullablePromise
   link: () => Promise<String>;
   image: () => Promise<String>;
   author: () => Promise<String>;
-  price: () => Promise<Int>;
-  discount: () => Promise<Int>;
+  price: () => Promise<String>;
+  discount: () => Promise<String>;
   publisher: () => Promise<String>;
   description: () => Promise<String>;
   post: <T = PostPromise>() => T;
@@ -2573,8 +2587,8 @@ export interface BookPreviousValues {
   link?: String;
   image?: String;
   author: String;
-  price?: Int;
-  discount?: Int;
+  price?: String;
+  discount?: String;
   publisher: String;
   description?: String;
   createdAt: DateTimeOutput;
@@ -2590,8 +2604,8 @@ export interface BookPreviousValuesPromise
   link: () => Promise<String>;
   image: () => Promise<String>;
   author: () => Promise<String>;
-  price: () => Promise<Int>;
-  discount: () => Promise<Int>;
+  price: () => Promise<String>;
+  discount: () => Promise<String>;
   publisher: () => Promise<String>;
   description: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
@@ -2607,8 +2621,8 @@ export interface BookPreviousValuesSubscription
   link: () => Promise<AsyncIterator<String>>;
   image: () => Promise<AsyncIterator<String>>;
   author: () => Promise<AsyncIterator<String>>;
-  price: () => Promise<AsyncIterator<Int>>;
-  discount: () => Promise<AsyncIterator<Int>>;
+  price: () => Promise<AsyncIterator<String>>;
+  discount: () => Promise<AsyncIterator<String>>;
   publisher: () => Promise<AsyncIterator<String>>;
   description: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -2833,11 +2847,6 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 export type String = string;
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
-*/
-export type Int = number;
-
-/*
 DateTime scalar input type, allowing Date
 */
 export type DateTimeInput = Date | string;
@@ -2846,6 +2855,11 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+*/
+export type Int = number;
 
 /*
 The `Boolean` scalar type represents `true` or `false`.

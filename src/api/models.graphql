@@ -21,7 +21,7 @@ type User {
 type Post {
   id: ID!
   user: User!
-  book: Book!
+  book: Book
   sentiment: String!
   likes: [Like!]!
   comments: [Comment!]!
@@ -56,8 +56,8 @@ type Book {
   link: String
   image: String
   author: String!
-  price: Int
-  discount: Int
+  price: String
+  discount: String
   publisher: String!
   description: String
 }

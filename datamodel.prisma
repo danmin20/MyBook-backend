@@ -21,7 +21,7 @@ type Post {
   comments: [Comment!]! @relation(name: "CommentsOfPost" onDelete: CASCADE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  book: Book! @relation(link: INLINE)
+  book: Book @relation(link: INLINE)
 }
 
 type Like {
@@ -48,8 +48,8 @@ type Book {
   link: String
   image: String
   author: String!
-  price: Int
-  discount: Int
+  price: String
+  discount: String
   publisher: String!
   description: String
   post: Post
