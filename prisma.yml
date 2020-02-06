@@ -1,6 +1,0 @@
-endpoint: https://mybook-prisma-e7a0a8afd9.herokuapp.com/mybook-backend/dev
-datamodel: datamodel.prisma
-
-generate:
-  - generator: javascript-client
-    output: ./generated/prisma-client/
