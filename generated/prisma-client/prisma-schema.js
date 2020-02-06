@@ -1270,8 +1270,8 @@ type Subscription {
 
 type User {
   id: ID!
-  avatar: String
   name: String!
+  bio: String
   email: String!
   followers(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   following(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
@@ -1291,8 +1291,8 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
-  avatar: String
   name: String!
+  bio: String
   email: String!
   followers: UserCreateManyWithoutFollowingInput
   following: UserCreateManyWithoutFollowersInput
@@ -1329,8 +1329,8 @@ input UserCreateOneWithoutPostsInput {
 
 input UserCreateWithoutCommentsInput {
   id: ID
-  avatar: String
   name: String!
+  bio: String
   email: String!
   followers: UserCreateManyWithoutFollowingInput
   following: UserCreateManyWithoutFollowersInput
@@ -1341,8 +1341,8 @@ input UserCreateWithoutCommentsInput {
 
 input UserCreateWithoutFollowersInput {
   id: ID
-  avatar: String
   name: String!
+  bio: String
   email: String!
   following: UserCreateManyWithoutFollowersInput
   posts: PostCreateManyWithoutUserInput
@@ -1353,8 +1353,8 @@ input UserCreateWithoutFollowersInput {
 
 input UserCreateWithoutFollowingInput {
   id: ID
-  avatar: String
   name: String!
+  bio: String
   email: String!
   followers: UserCreateManyWithoutFollowingInput
   posts: PostCreateManyWithoutUserInput
@@ -1365,8 +1365,8 @@ input UserCreateWithoutFollowingInput {
 
 input UserCreateWithoutLikesInput {
   id: ID
-  avatar: String
   name: String!
+  bio: String
   email: String!
   followers: UserCreateManyWithoutFollowingInput
   following: UserCreateManyWithoutFollowersInput
@@ -1377,8 +1377,8 @@ input UserCreateWithoutLikesInput {
 
 input UserCreateWithoutPostsInput {
   id: ID
-  avatar: String
   name: String!
+  bio: String
   email: String!
   followers: UserCreateManyWithoutFollowingInput
   following: UserCreateManyWithoutFollowersInput
@@ -1395,10 +1395,10 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
-  avatar_ASC
-  avatar_DESC
   name_ASC
   name_DESC
+  bio_ASC
+  bio_DESC
   email_ASC
   email_DESC
   loginSecret_ASC
@@ -1411,8 +1411,8 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
-  avatar: String
   name: String!
+  bio: String
   email: String!
   loginSecret: String
   createdAt: DateTime!
@@ -1434,20 +1434,6 @@ input UserScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  avatar: String
-  avatar_not: String
-  avatar_in: [String!]
-  avatar_not_in: [String!]
-  avatar_lt: String
-  avatar_lte: String
-  avatar_gt: String
-  avatar_gte: String
-  avatar_contains: String
-  avatar_not_contains: String
-  avatar_starts_with: String
-  avatar_not_starts_with: String
-  avatar_ends_with: String
-  avatar_not_ends_with: String
   name: String
   name_not: String
   name_in: [String!]
@@ -1462,6 +1448,20 @@ input UserScalarWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  bio: String
+  bio_not: String
+  bio_in: [String!]
+  bio_not_in: [String!]
+  bio_lt: String
+  bio_lte: String
+  bio_gt: String
+  bio_gte: String
+  bio_contains: String
+  bio_not_contains: String
+  bio_starts_with: String
+  bio_not_starts_with: String
+  bio_ends_with: String
+  bio_not_ends_with: String
   email: String
   email_not: String
   email_in: [String!]
@@ -1530,8 +1530,8 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateInput {
-  avatar: String
   name: String
+  bio: String
   email: String
   followers: UserUpdateManyWithoutFollowingInput
   following: UserUpdateManyWithoutFollowersInput
@@ -1542,15 +1542,15 @@ input UserUpdateInput {
 }
 
 input UserUpdateManyDataInput {
-  avatar: String
   name: String
+  bio: String
   email: String
   loginSecret: String
 }
 
 input UserUpdateManyMutationInput {
-  avatar: String
   name: String
+  bio: String
   email: String
   loginSecret: String
 }
@@ -1610,8 +1610,8 @@ input UserUpdateOneWithoutPostsInput {
 }
 
 input UserUpdateWithoutCommentsDataInput {
-  avatar: String
   name: String
+  bio: String
   email: String
   followers: UserUpdateManyWithoutFollowingInput
   following: UserUpdateManyWithoutFollowersInput
@@ -1621,8 +1621,8 @@ input UserUpdateWithoutCommentsDataInput {
 }
 
 input UserUpdateWithoutFollowersDataInput {
-  avatar: String
   name: String
+  bio: String
   email: String
   following: UserUpdateManyWithoutFollowersInput
   posts: PostUpdateManyWithoutUserInput
@@ -1632,8 +1632,8 @@ input UserUpdateWithoutFollowersDataInput {
 }
 
 input UserUpdateWithoutFollowingDataInput {
-  avatar: String
   name: String
+  bio: String
   email: String
   followers: UserUpdateManyWithoutFollowingInput
   posts: PostUpdateManyWithoutUserInput
@@ -1643,8 +1643,8 @@ input UserUpdateWithoutFollowingDataInput {
 }
 
 input UserUpdateWithoutLikesDataInput {
-  avatar: String
   name: String
+  bio: String
   email: String
   followers: UserUpdateManyWithoutFollowingInput
   following: UserUpdateManyWithoutFollowersInput
@@ -1654,8 +1654,8 @@ input UserUpdateWithoutLikesDataInput {
 }
 
 input UserUpdateWithoutPostsDataInput {
-  avatar: String
   name: String
+  bio: String
   email: String
   followers: UserUpdateManyWithoutFollowingInput
   following: UserUpdateManyWithoutFollowersInput
@@ -1716,20 +1716,6 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  avatar: String
-  avatar_not: String
-  avatar_in: [String!]
-  avatar_not_in: [String!]
-  avatar_lt: String
-  avatar_lte: String
-  avatar_gt: String
-  avatar_gte: String
-  avatar_contains: String
-  avatar_not_contains: String
-  avatar_starts_with: String
-  avatar_not_starts_with: String
-  avatar_ends_with: String
-  avatar_not_ends_with: String
   name: String
   name_not: String
   name_in: [String!]
@@ -1744,6 +1730,20 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  bio: String
+  bio_not: String
+  bio_in: [String!]
+  bio_not_in: [String!]
+  bio_lt: String
+  bio_lte: String
+  bio_gt: String
+  bio_gte: String
+  bio_contains: String
+  bio_not_contains: String
+  bio_starts_with: String
+  bio_not_starts_with: String
+  bio_ends_with: String
+  bio_not_ends_with: String
   email: String
   email_not: String
   email_in: [String!]
