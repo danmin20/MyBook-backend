@@ -6,7 +6,7 @@ const clientSecret = process.env.SECRET;
 
 export const getBooks = async term => {
   const {
-    data: { items: movies }
+    data: { items }
   } = await axios.get(URL, {
     params: {
       query: term,
@@ -17,5 +17,5 @@ export const getBooks = async term => {
       "X-Naver-Client-Secret": clientSecret
     }
   });
-  return movies;
+  return items;
 };
