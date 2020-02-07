@@ -16,6 +16,7 @@ type User {
 type Post {
   id: ID! @id
   user: User @relation(name: "PostsOfUser")
+  title: String!
   sentiment: String!
   likes: [Like!]! @relation(name: "LikesOfPost" onDelete: CASCADE)
   comments: [Comment!]! @relation(name: "CommentsOfPost" onDelete: CASCADE)
