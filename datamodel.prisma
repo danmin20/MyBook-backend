@@ -47,7 +47,9 @@ type Book {
   isbn: String!
   title: String!
   link: String
-  image: String
+  image: String @default(
+    value: "https://www.google.com/url?sa=i&url=https%3A%2F%2Firasu-toya.blogspot.com%2F2019%2F08%2Fhd-exclusive-no-image-available-picture.html&psig=AOvVaw2q4Iu3OFzTal6-WXJJkdzt&ust=1581239319870000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNianNLNwecCFQAAAAAdAAAAABAI"
+  )
   author: String!
   price: String
   discount: String

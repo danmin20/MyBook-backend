@@ -272,6 +272,8 @@ export type UserOrderByInput =
 export type PostOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "title_ASC"
+  | "title_DESC"
   | "sentiment_ASC"
   | "sentiment_DESC"
   | "createdAt_ASC"
@@ -452,6 +454,20 @@ export interface PostWhereInput {
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
   user?: Maybe<UserWhereInput>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
   sentiment?: Maybe<String>;
   sentiment_not?: Maybe<String>;
   sentiment_in?: Maybe<String[] | String>;
@@ -786,6 +802,7 @@ export interface PostCreateOneWithoutBookInput {
 export interface PostCreateWithoutBookInput {
   id?: Maybe<ID_Input>;
   user?: Maybe<UserCreateOneWithoutPostsInput>;
+  title: String;
   sentiment: String;
   likes?: Maybe<LikeCreateManyWithoutPostInput>;
   comments?: Maybe<CommentCreateManyWithoutPostInput>;
@@ -834,6 +851,7 @@ export interface PostCreateManyWithoutUserInput {
 
 export interface PostCreateWithoutUserInput {
   id?: Maybe<ID_Input>;
+  title: String;
   sentiment: String;
   likes?: Maybe<LikeCreateManyWithoutPostInput>;
   comments?: Maybe<CommentCreateManyWithoutPostInput>;
@@ -904,6 +922,7 @@ export interface PostCreateOneWithoutLikesInput {
 export interface PostCreateWithoutLikesInput {
   id?: Maybe<ID_Input>;
   user?: Maybe<UserCreateOneWithoutPostsInput>;
+  title: String;
   sentiment: String;
   comments?: Maybe<CommentCreateManyWithoutPostInput>;
   book?: Maybe<BookCreateOneWithoutPostInput>;
@@ -978,6 +997,7 @@ export interface PostCreateOneWithoutCommentsInput {
 export interface PostCreateWithoutCommentsInput {
   id?: Maybe<ID_Input>;
   user?: Maybe<UserCreateOneWithoutPostsInput>;
+  title: String;
   sentiment: String;
   likes?: Maybe<LikeCreateManyWithoutPostInput>;
   book?: Maybe<BookCreateOneWithoutPostInput>;
@@ -1007,6 +1027,7 @@ export interface PostUpdateOneWithoutBookInput {
 
 export interface PostUpdateWithoutBookDataInput {
   user?: Maybe<UserUpdateOneWithoutPostsInput>;
+  title?: Maybe<String>;
   sentiment?: Maybe<String>;
   likes?: Maybe<LikeUpdateManyWithoutPostInput>;
   comments?: Maybe<CommentUpdateManyWithoutPostInput>;
@@ -1096,6 +1117,7 @@ export interface PostUpdateWithWhereUniqueWithoutUserInput {
 }
 
 export interface PostUpdateWithoutUserDataInput {
+  title?: Maybe<String>;
   sentiment?: Maybe<String>;
   likes?: Maybe<LikeUpdateManyWithoutPostInput>;
   comments?: Maybe<CommentUpdateManyWithoutPostInput>;
@@ -1223,6 +1245,7 @@ export interface PostUpdateOneWithoutLikesInput {
 
 export interface PostUpdateWithoutLikesDataInput {
   user?: Maybe<UserUpdateOneWithoutPostsInput>;
+  title?: Maybe<String>;
   sentiment?: Maybe<String>;
   comments?: Maybe<CommentUpdateManyWithoutPostInput>;
   book?: Maybe<BookUpdateOneWithoutPostInput>;
@@ -1466,6 +1489,7 @@ export interface PostUpdateOneWithoutCommentsInput {
 
 export interface PostUpdateWithoutCommentsDataInput {
   user?: Maybe<UserUpdateOneWithoutPostsInput>;
+  title?: Maybe<String>;
   sentiment?: Maybe<String>;
   likes?: Maybe<LikeUpdateManyWithoutPostInput>;
   book?: Maybe<BookUpdateOneWithoutPostInput>;
@@ -1624,6 +1648,20 @@ export interface PostScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  title?: Maybe<String>;
+  title_not?: Maybe<String>;
+  title_in?: Maybe<String[] | String>;
+  title_not_in?: Maybe<String[] | String>;
+  title_lt?: Maybe<String>;
+  title_lte?: Maybe<String>;
+  title_gt?: Maybe<String>;
+  title_gte?: Maybe<String>;
+  title_contains?: Maybe<String>;
+  title_not_contains?: Maybe<String>;
+  title_starts_with?: Maybe<String>;
+  title_not_starts_with?: Maybe<String>;
+  title_ends_with?: Maybe<String>;
+  title_not_ends_with?: Maybe<String>;
   sentiment?: Maybe<String>;
   sentiment_not?: Maybe<String>;
   sentiment_in?: Maybe<String[] | String>;
@@ -1665,6 +1703,7 @@ export interface PostUpdateManyWithWhereNestedInput {
 }
 
 export interface PostUpdateManyDataInput {
+  title?: Maybe<String>;
   sentiment?: Maybe<String>;
 }
 
@@ -1727,6 +1766,7 @@ export interface LikeUpdateInput {
 export interface PostCreateInput {
   id?: Maybe<ID_Input>;
   user?: Maybe<UserCreateOneWithoutPostsInput>;
+  title: String;
   sentiment: String;
   likes?: Maybe<LikeCreateManyWithoutPostInput>;
   comments?: Maybe<CommentCreateManyWithoutPostInput>;
@@ -1735,6 +1775,7 @@ export interface PostCreateInput {
 
 export interface PostUpdateInput {
   user?: Maybe<UserUpdateOneWithoutPostsInput>;
+  title?: Maybe<String>;
   sentiment?: Maybe<String>;
   likes?: Maybe<LikeUpdateManyWithoutPostInput>;
   comments?: Maybe<CommentUpdateManyWithoutPostInput>;
@@ -1742,6 +1783,7 @@ export interface PostUpdateInput {
 }
 
 export interface PostUpdateManyMutationInput {
+  title?: Maybe<String>;
   sentiment?: Maybe<String>;
 }
 
@@ -1905,6 +1947,7 @@ export interface BookNullablePromise
 
 export interface Post {
   id: ID_Output;
+  title: String;
   sentiment: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -1913,6 +1956,7 @@ export interface Post {
 export interface PostPromise extends Promise<Post>, Fragmentable {
   id: () => Promise<ID_Output>;
   user: <T = UserPromise>() => T;
+  title: () => Promise<String>;
   sentiment: () => Promise<String>;
   likes: <T = FragmentableArray<Like>>(args?: {
     where?: LikeWhereInput;
@@ -1942,6 +1986,7 @@ export interface PostSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   user: <T = UserSubscription>() => T;
+  title: () => Promise<AsyncIterator<String>>;
   sentiment: () => Promise<AsyncIterator<String>>;
   likes: <T = Promise<AsyncIterator<LikeSubscription>>>(args?: {
     where?: LikeWhereInput;
@@ -1971,6 +2016,7 @@ export interface PostNullablePromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   user: <T = UserPromise>() => T;
+  title: () => Promise<String>;
   sentiment: () => Promise<String>;
   likes: <T = FragmentableArray<Like>>(args?: {
     where?: LikeWhereInput;
@@ -2753,6 +2799,7 @@ export interface PostSubscriptionPayloadSubscription
 
 export interface PostPreviousValues {
   id: ID_Output;
+  title: String;
   sentiment: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -2762,6 +2809,7 @@ export interface PostPreviousValuesPromise
   extends Promise<PostPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
   sentiment: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -2771,6 +2819,7 @@ export interface PostPreviousValuesSubscription
   extends Promise<AsyncIterator<PostPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
   sentiment: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;

@@ -8,7 +8,6 @@ export default {
       const { user } = request;
       const { title, sentiment, bookId } = args;
       const [book] = await getBooks(bookId);
-      console.log(book);
       const post = await prisma.createPost({
         title,
         sentiment,

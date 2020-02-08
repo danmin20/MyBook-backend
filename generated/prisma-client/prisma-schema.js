@@ -899,6 +899,7 @@ type PageInfo {
 type Post {
   id: ID!
   user: User
+  title: String!
   sentiment: String!
   likes(where: LikeWhereInput, orderBy: LikeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Like!]
   comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
@@ -916,6 +917,7 @@ type PostConnection {
 input PostCreateInput {
   id: ID
   user: UserCreateOneWithoutPostsInput
+  title: String!
   sentiment: String!
   likes: LikeCreateManyWithoutPostInput
   comments: CommentCreateManyWithoutPostInput
@@ -945,6 +947,7 @@ input PostCreateOneWithoutLikesInput {
 input PostCreateWithoutBookInput {
   id: ID
   user: UserCreateOneWithoutPostsInput
+  title: String!
   sentiment: String!
   likes: LikeCreateManyWithoutPostInput
   comments: CommentCreateManyWithoutPostInput
@@ -953,6 +956,7 @@ input PostCreateWithoutBookInput {
 input PostCreateWithoutCommentsInput {
   id: ID
   user: UserCreateOneWithoutPostsInput
+  title: String!
   sentiment: String!
   likes: LikeCreateManyWithoutPostInput
   book: BookCreateOneWithoutPostInput
@@ -961,6 +965,7 @@ input PostCreateWithoutCommentsInput {
 input PostCreateWithoutLikesInput {
   id: ID
   user: UserCreateOneWithoutPostsInput
+  title: String!
   sentiment: String!
   comments: CommentCreateManyWithoutPostInput
   book: BookCreateOneWithoutPostInput
@@ -968,6 +973,7 @@ input PostCreateWithoutLikesInput {
 
 input PostCreateWithoutUserInput {
   id: ID
+  title: String!
   sentiment: String!
   likes: LikeCreateManyWithoutPostInput
   comments: CommentCreateManyWithoutPostInput
@@ -982,6 +988,8 @@ type PostEdge {
 enum PostOrderByInput {
   id_ASC
   id_DESC
+  title_ASC
+  title_DESC
   sentiment_ASC
   sentiment_DESC
   createdAt_ASC
@@ -992,6 +1000,7 @@ enum PostOrderByInput {
 
 type PostPreviousValues {
   id: ID!
+  title: String!
   sentiment: String!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -1012,6 +1021,20 @@ input PostScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
   sentiment: String
   sentiment_not: String
   sentiment_in: [String!]
@@ -1067,6 +1090,7 @@ input PostSubscriptionWhereInput {
 
 input PostUpdateInput {
   user: UserUpdateOneWithoutPostsInput
+  title: String
   sentiment: String
   likes: LikeUpdateManyWithoutPostInput
   comments: CommentUpdateManyWithoutPostInput
@@ -1074,10 +1098,12 @@ input PostUpdateInput {
 }
 
 input PostUpdateManyDataInput {
+  title: String
   sentiment: String
 }
 
 input PostUpdateManyMutationInput {
+  title: String
   sentiment: String
 }
 
@@ -1127,6 +1153,7 @@ input PostUpdateOneWithoutLikesInput {
 
 input PostUpdateWithoutBookDataInput {
   user: UserUpdateOneWithoutPostsInput
+  title: String
   sentiment: String
   likes: LikeUpdateManyWithoutPostInput
   comments: CommentUpdateManyWithoutPostInput
@@ -1134,6 +1161,7 @@ input PostUpdateWithoutBookDataInput {
 
 input PostUpdateWithoutCommentsDataInput {
   user: UserUpdateOneWithoutPostsInput
+  title: String
   sentiment: String
   likes: LikeUpdateManyWithoutPostInput
   book: BookUpdateOneWithoutPostInput
@@ -1141,12 +1169,14 @@ input PostUpdateWithoutCommentsDataInput {
 
 input PostUpdateWithoutLikesDataInput {
   user: UserUpdateOneWithoutPostsInput
+  title: String
   sentiment: String
   comments: CommentUpdateManyWithoutPostInput
   book: BookUpdateOneWithoutPostInput
 }
 
 input PostUpdateWithoutUserDataInput {
+  title: String
   sentiment: String
   likes: LikeUpdateManyWithoutPostInput
   comments: CommentUpdateManyWithoutPostInput
@@ -1195,6 +1225,20 @@ input PostWhereInput {
   id_ends_with: ID
   id_not_ends_with: ID
   user: UserWhereInput
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
   sentiment: String
   sentiment_not: String
   sentiment_in: [String!]
