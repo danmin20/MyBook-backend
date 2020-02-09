@@ -14,7 +14,7 @@ export default {
         user: { connect: { id: user.id } }
       });
       await prisma.createBook({
-        isbn: book.isbn,
+        isbn: book.isbn.replace(/<b>/gi, "").replace(/<\/b>/gi, ""),
         title: book.title,
         link: book.link,
         image: book.image,
