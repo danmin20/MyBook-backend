@@ -22,7 +22,7 @@ type Post {
   comments: [Comment!]! @relation(name: "CommentsOfPost" onDelete: CASCADE)
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
-  book: Book @relation(link: INLINE)
+  book: Book @relation(link: INLINE onDelete: CASCADE)
 }
 
 type Like {
