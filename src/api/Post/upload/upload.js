@@ -7,7 +7,7 @@ export default {
       isAuthenticated(request);
       const { user } = request;
       const { title, sentiment, bookId } = args;
-      const [book] = await getBooks(bookId);
+      const [book] = await getBooks(bookId, 1);
       const post = await prisma.createPost({
         title,
         sentiment,
