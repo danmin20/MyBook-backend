@@ -1,0 +1,3 @@
+type Query {
+  postsOfBook(isbn: String!): [Post!]!
+}
