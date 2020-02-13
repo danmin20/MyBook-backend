@@ -2,9 +2,11 @@ import { prisma } from "../../../../generated/prisma-client";
 
 export default {
   Query: {
-    postsOfBook: async (_, { isbn }) => {
+    postsOfBook: async (_, args) => {
       return prisma.posts({
-        where: { book: { isbn } }
+        first: args.first,
+        skip: args.offset,
+        where: { book: { isbn: args.isbn } }
       });
     }
   }
