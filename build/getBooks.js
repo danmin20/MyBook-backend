@@ -1,5 +1,7 @@
 "use strict";
 
+var regeneratorRuntime = require("regenerator-runtime");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });

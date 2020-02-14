@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.regeneratorRuntime = void 0;
 
 var _graphqlYoga = require("graphql-yoga");
 
@@ -21,9 +20,6 @@ require("@babel/plugin-transform-runtime");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var regeneratorRuntime = require("regenerator-runtime");
-
-exports.regeneratorRuntime = regeneratorRuntime;
 var PORT = process.env.PORT || 80;
 var server = new _graphqlYoga.GraphQLServer({
   schema: _schema["default"],
