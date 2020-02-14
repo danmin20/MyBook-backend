@@ -1,6 +1,9 @@
 {
   "name": "mybook-backend",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.14.0"
+  },
   "description": "Book API with Graphql",
   "main": "index.js",
   "repository": "https://github.com/danmin20/mybook-backend.git",
