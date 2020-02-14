@@ -6,7 +6,7 @@ import { isAuthenticated } from "./middleware";
 import { authenticateJwt } from "./passport";
 import "@babel/polyfill";
 import "@babel/plugin-transform-runtime";
-import "regenerator-runtime";
+export const regeneratorRuntime = require("regenerator-runtime");
 
 const PORT = process.env.PORT || 80;
 
