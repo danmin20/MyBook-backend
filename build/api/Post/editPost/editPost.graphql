@@ -1,8 +1,0 @@
-enum ACTION {
-  EDIT
-  DELETE
-}
-
-type Mutation {
-  editPost(id: String!, title: String, sentiment: String, action: ACTION!): Post!
-}

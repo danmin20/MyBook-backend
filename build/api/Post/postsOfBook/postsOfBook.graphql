@@ -1,3 +1,0 @@
-type Query {
-  postsOfBook(isbn: String!, first: Int!, offset: Int!): [Post!]!
-}

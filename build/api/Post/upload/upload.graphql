@@ -1,3 +1,0 @@
-type Mutation {
-  upload(title: String!, sentiment: String!, bookId: String!): Post!
-}

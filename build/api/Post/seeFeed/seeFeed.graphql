@@ -1,3 +1,0 @@
-type Query {
-  seeFeed(first: Int!, offset: Int!): [Post!]!
-}
