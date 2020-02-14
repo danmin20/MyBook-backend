@@ -12,6 +12,10 @@ var _middleware = require("./middleware");
 
 require("@babel/polyfill");
 
+require("@babel/plugin-transform-runtime");
+
+require("regenerator-runtime");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var PORT = process.env.PORT || 80;
