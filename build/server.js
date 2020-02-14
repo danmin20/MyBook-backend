@@ -12,7 +12,6 @@ var _middleware = require("./middleware");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var PORT = process.env.PORT || 4000;
 var server = new _graphqlYoga.GraphQLServer({
   schema: _schema["default"],
   context: function context(_ref) {
