@@ -10,8 +10,11 @@ var _passport = require("./passport");
 
 var _middleware = require("./middleware");
 
+require("@babel/polyfill");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+var PORT = process.env.PORT || 80;
 var server = new _graphqlYoga.GraphQLServer({
   schema: _schema["default"],
   context: function context(_ref) {

@@ -4,6 +4,9 @@ import schema from "./schema";
 import "./passport";
 import { isAuthenticated } from "./middleware";
 import { authenticateJwt } from "./passport";
+import "@babel/polyfill";
+
+const PORT = process.env.PORT || 80;
 
 const server = new GraphQLServer({
   schema,
