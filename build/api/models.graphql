@@ -5,9 +5,9 @@ type User {
   email: String!
   followers: [User!]
   following: [User!]
-  posts: [Post!]!
-  likes: [Like!]!
-  comments: [Comment!]!
+  posts: [Post!]
+  likes: [Like!]
+  comments: [Comment!]
   loginSecret: String
   isFollowing: Boolean!
   isSelf: Boolean!
@@ -24,8 +24,8 @@ type Post {
   title: String!
   book: Book
   sentiment: String!
-  likes: [Like!]!
-  comments: [Comment!]!
+  likes: [Like!]
+  comments: [Comment!]
   isLiked: Boolean!
   likeCount: Int!
   commentCount: Int!
