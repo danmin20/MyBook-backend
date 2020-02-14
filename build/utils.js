@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -14,8 +16,6 @@ var _nodemailer = _interopRequireDefault(require("nodemailer"));
 var _nodemailerSendgridTransport = _interopRequireDefault(require("nodemailer-sendgrid-transport"));
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var generateSecret = function generateSecret() {
   var randomFirst = Math.floor(Math.random() * _words.adjectives.length);

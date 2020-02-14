@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -10,8 +12,6 @@ var _graphqlTools = require("graphql-tools");
 var _mergeGraphqlSchemas = require("merge-graphql-schemas");
 
 var _path = _interopRequireDefault(require("path"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var allTypes = (0, _mergeGraphqlSchemas.fileLoader)(_path["default"].join(__dirname, "/api/**/*.graphql"));
 var allResolvers = (0, _mergeGraphqlSchemas.fileLoader)(_path["default"].join(__dirname, "/api/**/*.js"));

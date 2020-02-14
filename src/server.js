@@ -1,11 +1,11 @@
+import "./env";
+import "@babel/polyfill";
 import { GraphQLServer } from "graphql-yoga";
 import logger from "morgan";
 import schema from "./schema";
 import "./passport";
 import { isAuthenticated } from "./middleware";
 import { authenticateJwt } from "./passport";
-import "@babel/polyfill";
-import "@babel/plugin-transform-runtime";
 
 const PORT = process.env.PORT || 80;
 
