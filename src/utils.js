@@ -24,7 +24,7 @@ export const sendSecretMail = (address, secret) => {
     from: "mybook@gmail.com",
     to: address,
     subject: "Login Secret for Mybook!",
-    html: `Hello! Your login secret is <strong>${secret}</strong>.<br/>Copy paste on the app/website to log in.`
+    html: `Hello! Your login secret is <strong>${secret}</strong>.<br/>위의 다섯 자리 숫자를 입력해주세요.`
   };
   return sendMail(email);
 };
