@@ -3,13 +3,9 @@ import nodemailer from "nodemailer";
 import sgTransport from "nodemailer-sendgrid-transport";
 import jwt from "jsonwebtoken";
 
-const generateRanNum = (min, max) => {
-  const num = Math.floor(Math.random() * (max - min + 1) + min);
-  return num;
-};
-
 export const generateSecret = () => {
-  return generateRanNum(10000, 99999);
+  const num = Math.floor(Math.random() * (99999 - 10000 + 1) + 10000);
+  return num.toString();
 };
 
 const sendMail = email => {

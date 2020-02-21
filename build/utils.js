@@ -15,13 +15,9 @@ var _nodemailerSendgridTransport = _interopRequireDefault(require("nodemailer-se
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
-var generateRanNum = function generateRanNum(min, max) {
-  var num = Math.floor(Math.random() * (max - min + 1) + min);
-  return num;
-};
-
 var generateSecret = function generateSecret() {
-  return generateRanNum(10000, 99999);
+  var num = Math.floor(Math.random() * (99999 - 10000 + 1) + 10000);
+  return num.toString();
 };
 
 exports.generateSecret = generateSecret;
