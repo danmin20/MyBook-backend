@@ -1,13 +1,15 @@
 import "./env";
-import { adjectives, nouns } from "./words";
 import nodemailer from "nodemailer";
 import sgTransport from "nodemailer-sendgrid-transport";
 import jwt from "jsonwebtoken";
 
+const generateRanNum = (min, max) => {
+  const num = Math.floor(Math.random() * (max - min + 1) + min);
+  return num;
+};
+
 export const generateSecret = () => {
-  const randomFirst = Math.floor(Math.random() * adjectives.length);
-  const randomSecond = Math.floor(Math.random() * nouns.length);
-  return `${adjectives[randomFirst]} ${nouns[randomSecond]}`;
+  return generateRanNum(10000, 99999);
 };
 
 const sendMail = email => {

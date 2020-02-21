@@ -9,18 +9,19 @@ exports.generateToken = exports.sendSecretMail = exports.generateSecret = void 0
 
 require("./env");
 
-var _words = require("./words");
-
 var _nodemailer = _interopRequireDefault(require("nodemailer"));
 
 var _nodemailerSendgridTransport = _interopRequireDefault(require("nodemailer-sendgrid-transport"));
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
+var generateRanNum = function generateRanNum(min, max) {
+  var num = Math.floor(Math.random() * (max - min + 1) + min);
+  return num;
+};
+
 var generateSecret = function generateSecret() {
-  var randomFirst = Math.floor(Math.random() * _words.adjectives.length);
-  var randomSecond = Math.floor(Math.random() * _words.nouns.length);
-  return "".concat(_words.adjectives[randomFirst], " ").concat(_words.nouns[randomSecond]);
+  return generateRanNum(10000, 99999);
 };
 
 exports.generateSecret = generateSecret;
