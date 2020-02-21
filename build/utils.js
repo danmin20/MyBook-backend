@@ -40,7 +40,7 @@ var sendSecretMail = function sendSecretMail(address, secret) {
     from: "mybook@gmail.com",
     to: address,
     subject: "Login Secret for Mybook!",
-    html: "Hello! Your login secret is <strong>".concat(secret, "</strong>.<br/>Copy paste on the app/website to log in.")
+    html: "Hello! Your login secret is <strong>".concat(secret, "</strong>.<br/>\uC704\uC758 \uB2E4\uC12F \uC790\uB9AC \uC22B\uC790\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694.")
   };
   return sendMail(email);
 };
