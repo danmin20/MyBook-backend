@@ -15,6 +15,4 @@ Apollo<br>
 Sendgrid<br>
 Passport<br>
 Expo<br>
-AWS S3<br>
 Heroku<br>
-Netlify<br>
