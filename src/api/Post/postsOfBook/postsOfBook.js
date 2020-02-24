@@ -5,7 +5,7 @@ export default {
     postsOfBook: async (_, args) => {
       return prisma.posts({
         first: args.first,
-        after: args.after,
+        skip: args.offset,
         where: { book: { isbn: args.isbn } }
       });
     }

@@ -25,7 +25,7 @@ var _default = {
               case 0:
                 return _context.abrupt("return", _prismaClient.prisma.posts({
                   first: args.first,
-                  after: args.after,
+                  skip: args.offset,
                   orderBy: "createdAt_DESC"
                 }));
 

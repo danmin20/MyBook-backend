@@ -38,7 +38,7 @@ var _default = {
                 following = _context.sent;
                 return _context.abrupt("return", _prismaClient.prisma.posts({
                   first: args.first,
-                  after: args.after,
+                  skip: args.offset,
                   where: {
                     user: {
                       id_in: [].concat((0, _toConsumableArray2["default"])(following.map(function (user) {
