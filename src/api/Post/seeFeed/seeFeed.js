@@ -8,7 +8,7 @@ export default {
       const following = await prisma.user({ id: user.id }).following();
       return prisma.posts({
         first: args.first,
-        skip: args.offset,
+        after: args.after,
         where: {
           user: { id_in: [...following.map(user => user.id), user.id] }
         },

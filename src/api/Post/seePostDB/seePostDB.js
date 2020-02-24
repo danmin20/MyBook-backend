@@ -5,7 +5,7 @@ export default {
     seePostDB: async (_, args) => {
       return prisma.posts({
         first: args.first,
-        skip: args.offset,
+        after: args.after,
         orderBy: "createdAt_DESC"
       });
     }
