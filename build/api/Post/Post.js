@@ -40,9 +40,7 @@ var _default = {
       }).likes();
     },
     isLiked: function () {
-      var _isLiked = (0, _asyncToGenerator2["default"])(
-      /*#__PURE__*/
-      _regenerator["default"].mark(function _callee(parent, _, _ref5) {
+      var _isLiked = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(parent, _, _ref5) {
         var request, user, id;
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {

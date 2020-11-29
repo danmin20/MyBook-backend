@@ -24,12 +24,8 @@ var jwtOptions = {
   secretOrKey: process.env.JWT_SECRET
 };
 
-var verifyUser =
-/*#__PURE__*/
-function () {
-  var _ref = (0, _asyncToGenerator2["default"])(
-  /*#__PURE__*/
-  _regenerator["default"].mark(function _callee(payload, done) {
+var verifyUser = /*#__PURE__*/function () {
+  var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(payload, done) {
     var user;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {

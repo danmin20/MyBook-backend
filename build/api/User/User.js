@@ -76,9 +76,7 @@ var _default = {
       }).aggregate().count();
     },
     isFollowing: function () {
-      var _isFollowing = (0, _asyncToGenerator2["default"])(
-      /*#__PURE__*/
-      _regenerator["default"].mark(function _callee(parent, _, _ref9) {
+      var _isFollowing = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(parent, _, _ref9) {
         var request, user, parentId;
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {

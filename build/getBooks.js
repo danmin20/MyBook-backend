@@ -19,13 +19,9 @@ var URL = "https://openapi.naver.com/v1/search/book.json";
 var clientID = process.env.ID;
 var clientSecret = process.env.SECRET;
 
-var getBooks =
-/*#__PURE__*/
-function () {
-  var _ref = (0, _asyncToGenerator2["default"])(
-  /*#__PURE__*/
-  _regenerator["default"].mark(function _callee(term, start) {
-    var _ref2, items;
+var getBooks = /*#__PURE__*/function () {
+  var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(term, start) {
+    var _yield$axios$get, items;
 
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
@@ -45,8 +41,8 @@ function () {
             });
 
           case 2:
-            _ref2 = _context.sent;
-            items = _ref2.data.items;
+            _yield$axios$get = _context.sent;
+            items = _yield$axios$get.data.items;
             return _context.abrupt("return", items);
 
           case 5:

@@ -16,9 +16,7 @@ var _prismaClient = require("../../../../generated/prisma-client");
 var _default = {
   Mutation: {
     toggleFollow: function () {
-      var _toggleFollow = (0, _asyncToGenerator2["default"])(
-      /*#__PURE__*/
-      _regenerator["default"].mark(function _callee(_, args, _ref) {
+      var _toggleFollow = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(_, args, _ref) {
         var request, isAuthenticated, id, user, existingFollow;
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {

@@ -18,9 +18,7 @@ var _utils = require("../../../utils");
 var _default = {
   Mutation: {
     confirmSecret: function () {
-      var _confirmSecret = (0, _asyncToGenerator2["default"])(
-      /*#__PURE__*/
-      _regenerator["default"].mark(function _callee(_, args) {
+      var _confirmSecret = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(_, args) {
         var email, secret, user, token;
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {

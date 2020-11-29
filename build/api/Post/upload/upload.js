@@ -20,10 +20,8 @@ var _getBooks = require("../../../getBooks");
 var _default = {
   Mutation: {
     upload: function () {
-      var _upload = (0, _asyncToGenerator2["default"])(
-      /*#__PURE__*/
-      _regenerator["default"].mark(function _callee(_, args, _ref) {
-        var request, isAuthenticated, user, title, sentiment, bookId, _ref2, _ref3, book, post;
+      var _upload = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(_, args, _ref) {
+        var request, isAuthenticated, user, title, sentiment, bookId, _yield$getBooks, _yield$getBooks2, book, post;
 
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {
@@ -37,9 +35,9 @@ var _default = {
                 return (0, _getBooks.getBooks)(bookId, 1);
 
               case 6:
-                _ref2 = _context.sent;
-                _ref3 = (0, _slicedToArray2["default"])(_ref2, 1);
-                book = _ref3[0];
+                _yield$getBooks = _context.sent;
+                _yield$getBooks2 = (0, _slicedToArray2["default"])(_yield$getBooks, 1);
+                book = _yield$getBooks2[0];
                 _context.next = 11;
                 return _prismaClient.prisma.createPost({
                   title: title,

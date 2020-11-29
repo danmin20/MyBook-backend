@@ -16,9 +16,7 @@ var _prismaClient = require("../../../../generated/prisma-client");
 var _default = {
   Query: {
     me: function () {
-      var _me = (0, _asyncToGenerator2["default"])(
-      /*#__PURE__*/
-      _regenerator["default"].mark(function _callee(_, __, _ref) {
+      var _me = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(_, __, _ref) {
         var request, isAuthenticated, user;
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {

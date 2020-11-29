@@ -1,0 +1,3 @@
+type Query {
+  books(term: String!, start: Int!): [Book]!
+}

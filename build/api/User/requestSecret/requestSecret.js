@@ -18,9 +18,7 @@ var _prismaClient = require("../../../../generated/prisma-client");
 var _default = {
   Mutation: {
     requestSecret: function () {
-      var _requestSecret = (0, _asyncToGenerator2["default"])(
-      /*#__PURE__*/
-      _regenerator["default"].mark(function _callee(_, args) {
+      var _requestSecret = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(_, args) {
         var email, loginSecret;
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) {

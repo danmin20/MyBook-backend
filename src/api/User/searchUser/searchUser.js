@@ -5,8 +5,8 @@ export default {
     searchUser: async (_, args) =>
       prisma.users({
         where: {
-          name_contains: args.name
-        }
-      })
-  }
+          name_contains: args.name,
+        },
+      }),
+  },
 };
